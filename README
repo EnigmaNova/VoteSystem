@@ -2,15 +2,18 @@
 я решил использовать для идентификации простой вход в свой аккаунт через login и все.
 
 | Not clear what "account" you are referring to. Please describe how user authentication will work. Do we even need to authenticate the user?  What if it's an anonymous vote, e.g. for your favorite singer on The Voice
+-аунтефикация будет происходить просто через регистрацию или вход по логину. Голосование вообще пока планируется анонимным, в будущем можно сделать и публичным
 
 а вся информация хранится в базе данных h2 (пока что) в двух таблицах:
 первая users имеет id, login и choice(который сначала = 0) нужна для регистрации пользователя.
 
 | So the system will only work once, for a single poll?  Let's make sure we can have multiple polls.
+-пока что я сделал только с одним запросом. Однако думаю что дальше просто создам еще одну таблицу где будут хранится все голосования и тогда пользователь сможет учавствовать в нескольких
 
 вторая таблица votes имеет id, name count (который увеличивается на 1 при каждом выборе этой сущности в choice у user)
 
 | Where is the mapping between these IDs and actual choices (e.g. names of singers)?
+-это прописано в src/main/java...models/user.java вообще я пока это не делал. пока идея такая - на веб странице будет несколько которые будут браться из таблицы vote из name и при клике его count увеличивается и в процентном соотношении выдает результат пользователю
 
 связь у таблиц OneToMany тк у одного выбора может быть множество пользователей, где я и связал модель user с vote 
 то же самое и с другой моделью vote
