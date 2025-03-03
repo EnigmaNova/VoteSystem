@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать контейнер</title>
+</head>
+<body>
+    <h1>Создать новый контейнер</h1>
+
+    <form th:action="@{/containers/new}" method="post" th:object="${container}">
+        <label>Текст контейнера:</label>
+        <input type="text" th:field="*{text}" required /><br><br>
+
+        <button type="submit">Создать</button>
+    </form>
+
+</body>
+</html>
+

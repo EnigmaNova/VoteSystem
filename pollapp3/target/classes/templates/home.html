@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Containers</title>
+    <link rel="stylesheet" th:href="@{/static/home.css}">
+</head>
+<body>
+    <a th:href="@{/containers/new}">Go to Answer Form</a>
+    <div class="main-container">
+        <h1 class="page-title">Containers List</h1>
+        <div class="container-list">
+            <div th:each="container : ${containers}" class="container-block">
+                <a th:href="@{/container/{id}(id=${container.id})}" class="container-link">
+                    <div class="container-info">
+                        <h2 th:text="${container.text}" class="container-title"></h2>
+                        <p class="container-description">Здесь могло быть ваше описание</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
