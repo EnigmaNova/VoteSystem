@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить Ответ</title>
+</head>
+<body>
+    <h1>Добавить Ответ</h1>
+
+    <form th:action="@{/answers/new}" method="post" th:object="${answer}">
+        <label>Ответ:</label>
+        <input type="text" th:field="*{name}" required /><br><br>
+
+        <label>Выберите контейнер:</label>
+        <!-- Привязываем контейнер через ID -->
+        <select name="containerId" required>
+            <option th:each="container : ${containers}"
+                    th:value="${container.id}" 
+                    th:text="${container.text}"></option>
+        </select><br><br>
+
+        <button type="submit">Добавить</button>
+    </form>
+
+</body>
+</html>
